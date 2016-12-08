@@ -1,4 +1,4 @@
-package de.snuk.customrepo.repository;
+package de.snuk.springdata.customrepo.repository;
 
 import java.io.Serializable;
 

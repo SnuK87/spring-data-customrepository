@@ -1,4 +1,4 @@
-package de.snuk.customrepo.domain.model;
+package de.snuk.springdata.customrepo.domain;
 
 import java.time.LocalDateTime;
 

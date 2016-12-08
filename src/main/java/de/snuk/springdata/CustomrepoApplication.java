@@ -1,4 +1,4 @@
-package de.snuk.customrepo;
+package de.snuk.springdata;
 
 import java.time.LocalDateTime;
 
@@ -8,11 +8,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import de.snuk.customrepo.domain.model.TestEntity;
-import de.snuk.customrepo.domain.repository.TestEntityRepository;
-import de.snuk.customrepo.repository.RepoFactoBeano;
+import de.snuk.springdata.customrepo.domain.TestEntity;
+import de.snuk.springdata.customrepo.domain.TestEntityRepository;
+import de.snuk.springdata.customrepo.repository.RepoFactoBeano;
 
-@EnableJpaRepositories(basePackages = "de.snuk.customrepo", entityManagerFactoryRef = "entityManagerFactory", repositoryFactoryBeanClass = RepoFactoBeano.class)
+@EnableJpaRepositories(basePackages = "de.snuk.springdata.customrepo", entityManagerFactoryRef = "entityManagerFactory", repositoryFactoryBeanClass = RepoFactoBeano.class)
 @SpringBootApplication
 public class CustomrepoApplication implements CommandLineRunner {
 
