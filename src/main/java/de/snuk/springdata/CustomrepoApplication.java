@@ -12,7 +12,7 @@ import de.snuk.springdata.customrepo.domain.TestEntity;
 import de.snuk.springdata.customrepo.domain.TestEntityRepository;
 import de.snuk.springdata.customrepo.repository.RepoFactoBeano;
 
-@EnableJpaRepositories(basePackages = "de.snuk.springdata.customrepo", entityManagerFactoryRef = "entityManagerFactory", repositoryFactoryBeanClass = RepoFactoBeano.class)
+@EnableJpaRepositories(basePackages = "de.snuk.springdata.customrepo", repositoryFactoryBeanClass = RepoFactoBeano.class)
 @SpringBootApplication
 public class CustomrepoApplication implements CommandLineRunner {
 
@@ -25,8 +25,12 @@ public class CustomrepoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		TestEntity t = new TestEntity(null, "Val", LocalDateTime.now());
+		TestEntity t = new TestEntity(null, "Value", LocalDateTime.now());
 		TestEntity savedEntity = repository.save(t);
-		System.out.println(savedEntity);
+		System.out.println("Saved Entity: " + savedEntity);
+
+		t.setValue("newValue");
+		TestEntity update = repository.update(t);
+		System.out.println("Updated Entity: " + update);
 	}
 }

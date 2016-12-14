@@ -21,19 +21,22 @@ public class CustomRepositoryImpl<T, ID extends Serializable> extends SimpleJpaR
 
 	@Override
 	@Transactional
-	public boolean findAllByValue(String value) {
-		return false;
-	}
-
-	@Override
-	@Transactional
 	public <S extends T> S save(S entity) {
 		if (entityInformation.isNew(entity)) {
 			entityManager.persist(entity);
 			return entity;
-		} else {
-			return null;
 		}
+
+		return null;
 	}
 
+	@Override
+	@Transactional
+	public <S extends T> S update(S entity) {
+		if (!entityInformation.isNew(entity)) {
+			return entityManager.merge(entity);
+		}
+
+		return null;
+	}
 }
